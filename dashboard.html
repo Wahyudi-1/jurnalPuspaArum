@@ -171,11 +171,34 @@
                     <div class="form-group"><label for="formKelas">Kelas</label><input type="text" id="formKelas" name="Kelas" placeholder="Contoh: X-A"></div>
                     <div class="form-group"><label for="formTahunAjaran">Tahun Ajaran</label><input type="text" id="formTahunAjaran" name="TahunAjaran" placeholder="Contoh: 2024/2025"></div>
                     <div class="form-group"><label for="formMapel">Mata Pelajaran (pisahkan koma jika lebih dari satu)</label><input type="text" id="formMapel" name="MataPelajaran" placeholder="Contoh: Matematika, Fisika"></div>
-                    <div class="form-group"><label for="formSemesterSiswa">Semester</label><input type="text" id="formSemesterSiswa" name="Semester" placeholder="Contoh: Ganjil"></div>
+                    <div class="form-group">
+                        <label for="formSemesterSiswa">Semester</label>
+                        <select id="formSemesterSiswa" name="Semester" required>
+                            <option value="">-- Pilih Semester --</option>
+                            <option value="Ganjil">Ganjil</option>
+                            <option value="Genap">Genap</option>
+                        </select>
+                    </div>                    
                     <div class="form-actions"><button type="submit" id="saveSiswaButton" class="btn btn-accent">Simpan Data Siswa</button><button type="button" id="resetSiswaButton" class="btn btn-secondary">Batal</button></div>
                 </form>
                 <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
                 <h4>Daftar Siswa</h4>
+                <!-- [BARU] Tambahkan div wrapper ini -->
+                <div id="siswaListWrapper" style="display: none;"> 
+                    <div class="form-grid">
+                        <div class="form-group"><label for="nisnSearchInput">Cari Siswa (NISN/Nama)</label><input type="text" id="nisnSearchInput" placeholder="Ketik untuk mencari..."></div>
+                        <div class="form-group" style="align-self: end;">
+                            <button type="button" id="refreshSiswaButton" class="btn btn-secondary" title="Muat ulang data siswa dari server">Refresh Data</button>
+                            <button type="button" id="exportSiswaExcel" class="btn btn-success" style="margin-left: 10px;">Export</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>NISN</th><th>Nama</th><th>Kelas</th><th>Tahun Ajaran</th><th>Aksi</th></tr></thead>
+                            <tbody id="siswaResultsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div> <!-- [BARU] Akhir dari div wrapper -->
                 <div class="form-grid">
                     <div class="form-group"><label for="nisnSearchInput">Cari Siswa (NISN/Nama)</label><input type="text" id="nisnSearchInput" placeholder="Ketik untuk mencari..."></div>
                     <div class="form-group" style="align-self: end;">
